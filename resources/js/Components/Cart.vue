@@ -14,6 +14,10 @@ const props = defineProps({
     open: {
         type: Boolean,
         required: true,
+    },
+    cart: {
+        type: Array,
+        required: true,
     }
 });
 
