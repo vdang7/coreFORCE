@@ -4,6 +4,9 @@ namespace App\Http\Middleware;
 
 use Illuminate\Http\Request;
 use Inertia\Middleware;
+use Illuminate\Support\Facades\Auth;
+use App\Models\Cart;
+use Inertia\Inertia;
 
 class HandleInertiaRequests extends Middleware
 {
@@ -34,6 +37,27 @@ class HandleInertiaRequests extends Middleware
             'auth' => [
                 'user' => $request->user(),
             ],
+            'cart' => $this->getCart()
         ];
+    }
+
+    private function getCart()
+    {
+        $sessionId = session()->getId();
+
+        $cartItems = null;
+
+        if (Auth::check()) {
+            $cartItems = Cart::where('user_id', Auth::id())->get();
+        } else {
+            $cartItems = Cart::where('session_id', $sessionId)->get();
+        }
+
+        return $cartItems->map(function ($cartItem) {
+            return [
+                'id' => $cartItem->id,
+                'product' => $cartItem->product,
+            ];
+        });
     }
 }
