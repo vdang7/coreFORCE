@@ -1,15 +1,13 @@
 <script setup>
-import { computed } from "vue";
-import { usePage } from "@inertiajs/vue3";
-import { ShoppingBagIcon } from "@heroicons/vue/24/outline";
-import { ref } from "vue";
-import Cart from "@/Components/Cart.vue";
 import ApplicationLogo from "@/Components/ApplicationLogo.vue";
+import Cart from "@/Components/Cart.vue";
 import Dropdown from "@/Components/Dropdown.vue";
 import DropdownLink from "@/Components/DropdownLink.vue";
 import NavLink from "@/Components/NavLink.vue";
 import ResponsiveNavLink from "@/Components/ResponsiveNavLink.vue";
-import { Link } from "@inertiajs/vue3";
+import { ShoppingBagIcon } from "@heroicons/vue/24/outline";
+import { Link, usePage } from "@inertiajs/vue3";
+import { computed, ref } from "vue";
 
 const page = usePage();
 const cart = computed(() => page.props.cart);
@@ -47,6 +45,12 @@ const showingNavigationDropdown = ref(false);
                                 class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex sm:items-center"
                             >
                                 <NavLink
+                                    :href="route('products.create')"
+                                    :active="route().current('products.create')"
+                                >
+                                    Add product
+                                </NavLink>
+                                <NavLink
                                     v-if="isAuthenticated"
                                     :href="route('dashboard')"
                                     :active="route().current('dashboard')"
@@ -58,14 +62,14 @@ const showingNavigationDropdown = ref(false);
                                     :href="route('login')"
                                     :active="route().current('login')"
                                 >
-                                    Login
+                                    Sign in
                                 </NavLink>
                                 <NavLink
                                     v-if="!isAuthenticated"
                                     :href="route('register')"
                                     :active="route().current('register')"
                                 >
-                                    Register
+                                    Sign up
                                 </NavLink>
                                 <!-- Cart -->
                                 <div
@@ -213,6 +217,12 @@ const showingNavigationDropdown = ref(false);
                 >
                     <div class="space-y-1 pb-3 pt-2">
                         <ResponsiveNavLink
+                            :href="route('products.create')"
+                            :active="route().current('products.create')"
+                        >
+                            Add product
+                        </ResponsiveNavLink>
+                        <ResponsiveNavLink
                             v-if="isAuthenticated"
                             :href="route('dashboard')"
                             :active="route().current('dashboard')"
@@ -224,14 +234,14 @@ const showingNavigationDropdown = ref(false);
                             :href="route('login')"
                             :active="route().current('login')"
                         >
-                            Dashboard
+                            Sign in
                         </ResponsiveNavLink>
                         <ResponsiveNavLink
                             v-if="!isAuthenticated"
                             :href="route('register')"
                             :active="route().current('register')"
                         >
-                            Dashboard
+                            Sign up
                         </ResponsiveNavLink>
                     </div>
 
@@ -297,7 +307,7 @@ const showingNavigationDropdown = ref(false);
                 fill="currentColor"
             />
             <path
-                class="text-primary-700"
+                class="text-gray-900"
                 d="M1016.79 207L993.832 1.79499H1039.75L1056.68 151.609L1113.8 107.698V1.79499H1159.72V107.985L1216.26 151.609L1233.48 1.79499H1279.4L1256.44 207H1217.98L1136.76 141.277L1055.25 207H1016.79ZM1264.96 207L1357.37 1.79499H1428.26L1520.67 207H1470.74L1451.22 163.663H1334.41L1314.9 207H1264.96ZM1351.06 126.353H1434.57L1394.68 37.67H1390.95L1351.06 126.353ZM1523.58 207V1.79499H1695.5C1716.73 1.79499 1733.19 7.15232 1744.86 17.867C1756.72 28.5817 1762.65 44.845 1762.65 66.657C1762.65 85.2163 1758.35 99.7577 1749.74 110.281C1741.13 120.804 1728.88 127.405 1713 130.084L1760.36 207H1708.12L1664.21 131.519H1569.5V207H1523.58ZM1690.04 39.105H1569.5V93.922L1690.04 94.209C1698.46 94.209 1704.87 92.1043 1709.27 87.895C1713.86 83.6857 1716.16 76.6063 1716.16 66.657C1716.16 56.5163 1713.86 49.437 1709.27 45.419C1704.87 41.2097 1698.46 39.105 1690.04 39.105ZM1777.04 207V1.79499H2002.05V39.105H1822.96V84.451H1985.4V121.761H1822.96V169.69H2002.05V207H1777.04Z"
                 fill="currentColor"
             />
