@@ -1,7 +1,5 @@
 <script setup>
 import Layout from "@/Layouts/Layout.vue";
-import Container from "@/Components/Container.vue";
-import Cart from "@/Components/Cart.vue";
 import { CheckIcon, StarIcon } from "@heroicons/vue/20/solid";
 import { ShieldCheckIcon } from "@heroicons/vue/24/outline";
 
@@ -14,7 +12,6 @@ defineProps({
     },
 });
 
-import { ref } from "vue";
 import { useForm } from "@inertiajs/vue3";
 
 const form = useForm();
@@ -68,7 +65,7 @@ const addToCart = (id) => {
                                                     0, 1, 2, 3, 4,
                                                 ]"
                                                 :key="rating"
-                                                class="text-secondary-400 size-5 shrink-0"
+                                                class="text-primary-600 size-5 shrink-0"
                                                 aria-hidden="true"
                                             />
                                         </div>
@@ -101,7 +98,7 @@ const addToCart = (id) => {
 
                     <button
                         @click="addToCart(product.id)"
-                        class="mt-10 flex w-full items-center justify-center rounded-md border border-transparent bg-primary-600 px-8 py-3 text-base font-medium text-white hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 focus:ring-offset-gray-50"
+                        class="mt-10 flex w-full items-center justify-center rounded-md border border-transparent bg-secondary-600 px-8 py-3 text-base font-medium text-white hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-primary-500 hover:focus:ring-secondary-500 focus:ring-offset-2 focus:ring-offset-gray-50"
                     >
                         Add to cart
                     </button>
