@@ -43,6 +43,18 @@ const closeCart = () => {
 
 const form = useForm();
 
+const addProductToCart = (id) => {
+    form.productId = id;
+    form.post(route("cart.store", { id }), {
+        onSuccess: () => {
+            console.log("Product added to cart");
+        },
+        onError: () => {
+            console.error("Failed to add to cart");
+        },
+    });
+};
+
 const removeProductFromCart = (id) => {
     form.delete(route("cart.destroy", { id }), {
         onSuccess: () => {
@@ -210,10 +222,16 @@ const removeProductFromCart = (id) => {
                                                                         ).length
                                                                     }}
                                                                 </p>
-
                                                                 <div
-                                                                    class="flex"
+                                                                    class="flex space-x-5"
                                                                 >
+                                                                    <button
+                                                                        type="button"
+                                                                        @click="addProductToCart(cartItem.product.id)"
+                                                                        class="font-medium text-primary-600 hover:text-primary-500"
+                                                                    >
+                                                                        Add
+                                                                    </button>
                                                                     <button
                                                                         type="button"
                                                                         @click="
