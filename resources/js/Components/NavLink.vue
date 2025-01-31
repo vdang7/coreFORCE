@@ -1,6 +1,6 @@
 <script setup>
-import { computed } from "vue";
 import { Link } from "@inertiajs/vue3";
+import { computed } from "vue";
 
 const props = defineProps({
     href: {
@@ -14,7 +14,7 @@ const props = defineProps({
 
 const classes = computed(() =>
     props.active
-        ? "inline-flex items-center px-1 py-1 text-sm font-medium leading-5 text-gray-900 focus:outline-none focus:border-primary-700 transition duration-150 ease-in-out"
+        ? "inline-flex items-center px-1 py-1 text-sm font-medium leading-5 text-secondary-600 focus:outline-none focus:border-primary-700 transition duration-150 ease-in-out"
         : "inline-flex items-center px-1 py-1 text-sm font-medium leading-5 text-gray-500 hover:text-primary-700 hover:bg-primary-100 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition duration-150 ease-in-out"
 );
 </script>
