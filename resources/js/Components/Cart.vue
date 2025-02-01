@@ -18,7 +18,7 @@ const props = defineProps({
     cart: {
         type: Array,
         required: true,
-    }
+    },
 });
 
 const subTotal = computed(() => {
@@ -149,7 +149,11 @@ const removeProductFromCart = (id) => {
                                                             class="size-24 shrink-0 overflow-hidden rounded-md border border-gray-200"
                                                         >
                                                             <img
-                                                                :src="cartItem.product.image"
+                                                                :src="
+                                                                    cartItem
+                                                                        .product
+                                                                        .image
+                                                                "
                                                                 :alt="
                                                                     cartItem
                                                                         .product
@@ -225,21 +229,41 @@ const removeProductFromCart = (id) => {
                                                                 >
                                                                     <button
                                                                         type="button"
-                                                                        @click="addProductToCart(cartItem.product.id)"
+                                                                        @click="
+                                                                            addProductToCart(
+                                                                                cartItem
+                                                                                    .product
+                                                                                    .id
+                                                                            )
+                                                                        "
                                                                         class="group font-medium text-primary-600 hover:text-secondary-600 flex items-center justify-center"
                                                                     >
-                                                                        <span class="border border-primary-200 group-hover:border-secondary-200 size-5 rounded-full flex justify-center items-center mr-2">
-                                                                            <span class="group-hover:text-secondary-600 text-[1rem] translate-y-[-0.05rem]">+</span>
-                                                                        </span>Add
+                                                                        <span
+                                                                            class="border border-primary-200 group-hover:border-secondary-200 size-5 rounded-full flex justify-center items-center mr-2"
+                                                                        >
+                                                                            <span
+                                                                                class="group-hover:text-secondary-600 text-[1rem] translate-y-[-0.05rem]"
+                                                                                >+</span
+                                                                            > </span
+                                                                        >Add
                                                                     </button>
                                                                     <button
                                                                         type="button"
-                                                                        @click="removeProductFromCart(cartItem.id)"
+                                                                        @click="
+                                                                            removeProductFromCart(
+                                                                                cartItem.id
+                                                                            )
+                                                                        "
                                                                         class="group font-medium text-gray-600 hover:text-secondary-600 flex items-center justify-center"
                                                                     >
-                                                                        <span class="border border-gray-200 group-hover:border-secondary-200 size-5 rounded-full flex justify-center items-center mr-2">
-                                                                            <span class="group-hover:text-secondary-600 text-[1rem] translate-y-[-0.05rem]">&#8722;</span>
-                                                                        </span>Remove
+                                                                        <span
+                                                                            class="border border-gray-200 group-hover:border-secondary-200 size-5 rounded-full flex justify-center items-center mr-2"
+                                                                        >
+                                                                            <span
+                                                                                class="group-hover:text-secondary-600 text-[1rem] translate-y-[-0.05rem]"
+                                                                                >&#8722;</span
+                                                                            > </span
+                                                                        >Remove
                                                                     </button>
                                                                 </div>
                                                             </div>

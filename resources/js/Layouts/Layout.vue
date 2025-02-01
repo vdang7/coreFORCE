@@ -291,7 +291,7 @@ const showingNavigationDropdown = ref(false);
                     @close="openCart = false"
                     :cart="cart"
                 />
-                <slot @openCart="openCart = true" :open="openCart"/>
+                <slot @openCart="openCart = true" :open="openCart" />
             </main>
         </div>
     </div>
