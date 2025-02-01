@@ -235,9 +235,9 @@ const removeProductFromCart = (id) => {
                                                                     <button
                                                                         type="button"
                                                                         @click="removeProductFromCart(cartItem.id)"
-                                                                        class="group font-medium text-primary-600 hover:text-secondary-600 flex items-center justify-center"
+                                                                        class="group font-medium text-gray-600 hover:text-secondary-600 flex items-center justify-center"
                                                                     >
-                                                                        <span class="border border-primary-200 group-hover:border-secondary-200 size-5 rounded-full flex justify-center items-center mr-2">
+                                                                        <span class="border border-gray-200 group-hover:border-secondary-200 size-5 rounded-full flex justify-center items-center mr-2">
                                                                             <span class="group-hover:text-secondary-600 text-[1rem] translate-y-[-0.05rem]">&#8722;</span>
                                                                         </span>Remove
                                                                     </button>
@@ -266,7 +266,7 @@ const removeProductFromCart = (id) => {
                                         <div class="mt-6">
                                             <a
                                                 href="#"
-                                                class="flex items-center justify-center rounded-md border border-transparent bg-primary-600 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-primary-700"
+                                                class="flex items-center justify-center rounded-md border border-transparent bg-primary-700 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-primary-600"
                                                 >Checkout</a
                                             >
                                         </div>
