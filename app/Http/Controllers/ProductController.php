@@ -32,7 +32,7 @@ class ProductController extends Controller
             'description' => 'required|string',
             'price' => 'required|numeric|min:0',
             'quantity' => 'required|integer|min:0',
-            'image' => 'required|image|max:2048',
+            'image' => 'required|image|max:700',
         ]);
 
         $imagePath = null;
