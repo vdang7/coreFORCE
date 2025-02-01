@@ -34,19 +34,19 @@ const submit = () => {
 
 <template>
     <Layout>
-        <section class="pt-10 pb-16 sm:pb-24">
+        <section class="pt-24 pb-16 sm:pb-24">
             <Container>
-                <p class="text-sm font-semibold text-center text-primary-700">
-                    Hello coreWare
+                <p class="text-base/7 font-semibold text-primary-600 text-center">
+                    Hello
                 </p>
                 <h2
-                    class="text-6xl sm:text-7xl font-bold tracking-tight text-gray-900 text-center"
+                    class="mt-2 text-4xl font-semibold tracking-tight text-pretty text-gray-900 sm:text-5xl sm:text-balance text-center"
                 >
                     Add a product
                 </h2>
                 <form
                     @submit.prevent="submit"
-                    class="rounded-xl border border-gray-200 mt-10 space-y-4 bg-white px-10 pt-7 pb-7 max-w-2xl mx-auto"
+                    class="rounded-xl border border-gray-200 mt-16 space-y-4 bg-white px-10 pt-7 pb-7 max-w-2xl mx-auto"
                     method="POST"
                     enctype="multipart/form-data"
                 >
@@ -95,7 +95,7 @@ const submit = () => {
                         <label
                             for="product-image"
                             class="block text-sm/6 font-medium text-gray-900"
-                            >Product image</label
+                            >Product photo</label
                         >
                         <div
                             class="mb-8 flex justify-center rounded-lg border border-dashed border-gray-900/25 px-6 py-10"
@@ -110,7 +110,7 @@ const submit = () => {
                                         for="image"
                                         class="relative cursor-pointer rounded-md bg-white font-semibold text-primary-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-primary-600 focus-within:ring-offset-2 hover:text-primary-500"
                                     >
-                                        <span>Upload a file</span>
+                                        <span>Upload a photo</span>
                                         <input
                                             id="image"
                                             name="image"
