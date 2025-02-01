@@ -12,7 +12,8 @@ import { computed, ref } from "vue";
 const page = usePage();
 const cart = computed(() => page.props.cart);
 const isAuthenticated = computed(() => page.props.auth.user);
-const open = ref(false);
+const openCart = ref(false);
+defineExpose({ openCart });
 const showingNavigationDropdown = ref(false);
 </script>
 
@@ -78,7 +79,7 @@ const showingNavigationDropdown = ref(false);
                                     :class="isAuthenticated ? 'hidden' : ''"
                                 >
                                     <button
-                                        @click="open = true"
+                                        @click="openCart = true"
                                         class="group flex items-center p-2"
                                     >
                                         <ShoppingBagIcon
@@ -146,7 +147,7 @@ const showingNavigationDropdown = ref(false);
                             </div>
                             <div v-if="cart" class="flow-root">
                                 <button
-                                    @click="open = true"
+                                    @click="openCart = true"
                                     class="group flex items-center p-2"
                                 >
                                     <ShoppingBagIcon
@@ -286,16 +287,16 @@ const showingNavigationDropdown = ref(false);
             <main>
                 <Cart
                     v-if="cart"
-                    :open="open"
-                    @close="open = false"
+                    :open="openCart"
+                    @close="openCart = false"
                     :cart="cart"
                 />
-                <slot />
+                <slot @openCart="openCart = true" :open="openCart"/>
             </main>
         </div>
     </div>
     <svg
-        class="bg-gray-50"
+        class="bg-gray-50 -ml-0.5"
         viewBox="0 0 2003 209"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"

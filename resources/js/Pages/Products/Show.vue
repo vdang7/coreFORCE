@@ -2,8 +2,8 @@
 import Layout from "@/Layouts/Layout.vue";
 import { CheckIcon, StarIcon } from "@heroicons/vue/20/solid";
 import { ShieldCheckIcon } from "@heroicons/vue/24/outline";
-
-const origin = window.location.origin;
+import { useForm } from "@inertiajs/vue3";
+import { ref } from "vue";
 
 defineProps({
     product: {
@@ -12,7 +12,13 @@ defineProps({
     },
 });
 
-import { useForm } from "@inertiajs/vue3";
+const layoutRef = ref(null);
+
+const openCart = () => {
+    if (layoutRef.value) {
+        layoutRef.value.openCart = true;
+    }
+};
 
 const form = useForm();
 
@@ -21,6 +27,7 @@ const addToCart = (id) => {
     form.post(route("cart.store", { id }), {
         onSuccess: () => {
             console.log("Product added to cart");
+            openCart();
         },
         onError: () => {
             console.error("Failed to add to cart");
@@ -30,7 +37,7 @@ const addToCart = (id) => {
 </script>
 
 <template>
-    <Layout>
+    <Layout ref="layoutRef">
         <div class="bg-gray-50">
             <div
                 class="mx-auto relative max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:grid lg:max-w-7xl lg:grid-cols-2 lg:gap-x-8 lg:px-8"
@@ -117,7 +124,7 @@ const addToCart = (id) => {
                 <div class="mt-10 lg:col-start-2 lg:row-span-2 lg:self-center">
                     <img
                         :alt="product.name"
-                        :src="`${origin}/${product.image}`"
+                        :src="product.image"
                         class="aspect-[16/9] w-full rounded-lg object-cover"
                     />
                 </div>
