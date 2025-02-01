@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use Inertia\Inertia;
+use Illuminate\Http\File;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Product;
 use App\Models\Cart;
@@ -34,9 +36,9 @@ class ProductController extends Controller
         ]);
 
         $imagePath = null;
-
         if ($request->hasFile('image')) {
-            $imagePath = $request->file('image')->store('images/products', 'public');
+            $uploadImageToCloud = Storage::disk('s3')->putFile('public/images/products', new File($request->file('image')), 'public');
+            $cloudImagePath = Storage::url($uploadImageToCloud);
         }
 
         $product = Product::create([
@@ -45,7 +47,7 @@ class ProductController extends Controller
             'description' => $request->description,
             'price' => $request->price,
             'quantity' => $request->quantity,
-            'image' => $imagePath,
+            'image' => $cloudImagePath,
         ]);
 
         return redirect()->route('products.index');
